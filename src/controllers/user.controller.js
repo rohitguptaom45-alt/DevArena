@@ -125,6 +125,7 @@ const loginUser = asyncHandler(async (req, res) => {
     */
 
     const { email, password } = req.body
+    console.log(email, password);
     if ([email, password].some((f) => f.trim() == '')) {
         throw new ApiError(400, "All Field Are required")
     }
@@ -151,6 +152,9 @@ const loginUser = asyncHandler(async (req, res) => {
         //     updatedAt: true,
         // },
     })
+    
+
+    
     if (!user) {
         throw new ApiError(404, "User Account with that Email not found")
     }
