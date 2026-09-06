@@ -279,7 +279,7 @@ const welcomeEmailTemplate = (name) => {
                                     <td align="center" style="padding: 30px 0 15px;">
 
                                         <a
-                                            href="${process.env.FRONTEND_URL}"
+                                            href="${process.env.CLIENT_URL}"
                                             style="
                                                 display: inline-block;
                                                 padding: 14px 28px;

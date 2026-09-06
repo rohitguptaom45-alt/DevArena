@@ -78,7 +78,8 @@ const registerUser = asyncHandler(async (req, res) => {
         where: {
             OR: [
                 { email },
-                { username }
+                { username },
+                {phone}
             ]
         }
     })
@@ -86,7 +87,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 
     if (existing) {
-        throw new ApiError(409, "User With Same name or Email Alredy Exit")
+        throw new ApiError(409, "User With Same name or Email or phone Alredy Exit")
     }
     const hashedpass = await encryptpss(password)
 
@@ -843,6 +844,7 @@ const getGoogleLoginCallBack = asyncHandler(async (req, res) => {
             }
         }
     });
+    console.log("Creating teh new User ")
 
       const html = welcomeEmailTemplate(name);
 
