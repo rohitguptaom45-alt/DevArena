@@ -136,8 +136,8 @@ const loginHelper = async (user, res, redirect = true) => {
 
     const options = {
         httpOnly: true,
-        secure: false, // localhost
-        sameSite: "lax",
+        secure: true, // localhost
+        sameSite: "none",
     };
 
     res
