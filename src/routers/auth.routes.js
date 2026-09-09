@@ -4,7 +4,7 @@ import { generator, getOTP, getOtpTTL, varifyOTP } from "../controllers/auth.con
 
 const router=Router()
 
-router.route('/otp/generate').post(varifyJWt,generator)
+router.route('/otp/generate').post(generator)
 router.route('/otp/varify').post(varifyOTP)
 router.route('/otp/ttl').get(getOtpTTL)
 

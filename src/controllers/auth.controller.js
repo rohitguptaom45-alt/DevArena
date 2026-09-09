@@ -8,7 +8,7 @@ import { emailQueue } from "../utils/queue.js";
 import { otpkey } from "../utils/varification.js";
 
 const generator=asyncHandler(async (req,res)=>{
-    const {email}=req.user
+    const {email}=req.body          // ✅ "req.user" ki jagah "req.body"
    const otp = Math.floor(100000 + Math.random() * 900000);
     await redis.set(otpkey(email),`${otp}`,"EX",180)
 
@@ -36,10 +36,8 @@ const getOTP=asyncHandler(async (req,res)=>{
 
 })
 const getOtpTTL = asyncHandler(async (req, res) => {
-    const { email } = req.body;
-
+    const { email } = req.query;          
     const ttl = await redis.ttl(otpkey(email));
-
     return res.status(200).json(
         new ApiResponse(
             200,
